@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import MediaEvent from '../media-event/MediaEvent'
-import SocialMediaEventSource from '../event-source/SocialMediaEventSource'
 import moment from 'moment';
 import './MediaEventList.css';
+import SocialMediaWebSocket from '../websocket/SocialMediaWebSocket'
 
 class MediaEventList extends Component {
 	constructor(props) {
 		super(props);
-		this.eventSource = new SocialMediaEventSource();
+		this.socket = new SocialMediaWebSocket();
 		this.state = {
 			eventList: null
 		};
 	}
 	
 	componentDidMount() {
-		this.eventSource.addMessageHandler((eventListUpdate) => this.setState({
+		this.socket.addMessageHandler((eventListUpdate) => this.setState({
 			eventList: eventListUpdate
 		}));
 	}
@@ -24,10 +24,10 @@ class MediaEventList extends Component {
 			return (
 			<MediaEvent 
 				key={event.id}
-				created={event.created}
+				createdDate={event.createdDate}
 				text={event.text}
 				userImage={event.userImage}
-				userName={event.userName}
+				screenName={event.screenName}
 			/>
 			);
 		});

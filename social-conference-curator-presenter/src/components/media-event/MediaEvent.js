@@ -8,13 +8,13 @@ class MediaEvent extends Component {
 		return (
 			<div className="media-event">
 				<div className="user-details">
-					<img src={this.props.userImage} alt={"Image of " + this.props.userName}/>
+					<img src={this.props.userImage} alt={"Image of " + this.props.screenName}/>
 					<span className="user-name">
-						{this.props.userName}
+						{this.props.screenName}
 					</span>
 				</div>
 				<div className="creation-time">
-					Created: {moment(this.props.created).format('LLL')}
+					Created: {moment(this.props.createdDate).format('LLL')}
 				</div>
 				<div className="main-content">
 					{this.props.text}
