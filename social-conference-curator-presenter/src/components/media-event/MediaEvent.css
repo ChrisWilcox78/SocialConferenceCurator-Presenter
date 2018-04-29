@@ -1,0 +1,20 @@
+.media-event {
+	border-bottom-width: 20px;
+	border-color: #222222;
+	border-bottom-style: solid;	
+	padding: 10px;
+}
+
+.creation-time {
+	padding: 10px 0px;
+	font-style: italic;
+}
+
+.user-details img {
+	vertical-align: middle;
+	padding-right: 5px;
+}
+
+.user-name {
+	font-weight: bold;
+}
