@@ -1,36 +1,41 @@
+// @flow
 import React, { Component } from 'react';
 import MediaEvent from '../media-event/MediaEvent'
 import moment from 'moment';
 import './MediaEventList.css';
 import SocialMediaWebSocket from '../websocket/SocialMediaWebSocket'
 
-class MediaEventList extends Component {
-	constructor(props) {
-		super(props);
-		this.socket = new SocialMediaWebSocket();
-		this.state = {
-			eventList: null
-		};
+type State = {
+	eventList?: Array<Object>
+}
+
+class MediaEventList extends Component<{}, State> {
+	socket = new SocialMediaWebSocket();
+
+	state = {
+		
 	}
-	
+
 	componentDidMount() {
 		this.socket.addMessageHandler((eventListUpdate) => this.setState({
 			eventList: eventListUpdate
 		}));
-	}
+	} 
 	
 	_renderEventList() {
-		return this.state.eventList.map((event, index, eventList) => {
-			return (
-			<MediaEvent 
-				key={event.id}
-				createdDate={event.createdDate}
-				text={event.text}
-				userImage={event.userImage}
-				screenName={event.screenName}
-			/>
-			);
-		});
+		if (this.state.eventList) {
+			return this.state.eventList.map((event, index, eventList) => {
+				return (
+				<MediaEvent 
+					key={event.id}
+					createdDate={event.createdDate}
+					text={event.text}
+					userImage={event.userImage}
+					screenName={event.screenName}
+				/>
+				);
+			});
+		}
 	}
 	
 	render() {

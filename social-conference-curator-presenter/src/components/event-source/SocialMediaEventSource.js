@@ -12,14 +12,8 @@ class SocialMediaEventSource {
 	}
 
 	_extractUsefulData(parsedJson) {
-		return parsedJson.statuses.map(status => {
-			return {
-				id: status.id,
-				text: status.text,
-				created: status.created_at,
-				userName: status.user.screen_name,
-				userImage: status.user.profile_image_url_https
-			}
+		return parsedJson.map(status => {
+			return status.post;
 		});
 	}
 }

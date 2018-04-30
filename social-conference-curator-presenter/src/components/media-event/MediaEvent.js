@@ -1,8 +1,17 @@
+// @flow
+
 import React, { Component } from 'react';
 import './MediaEvent.css';
 import moment from 'moment';
 
-class MediaEvent extends Component {
+type Props = {
+	userImage: string,
+	screenName: string,
+	text: string,
+	createdDate: Date
+}
+
+class MediaEvent extends Component<Props, {}> {
 
 	render() {
 		return (
